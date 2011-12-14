@@ -2,8 +2,3 @@ ServerAliveInterval 5
 ServerAliveCountMax 5
 TCPKeepAlive yes
 StrictHostKeyChecking no
-
-# beRecruited
-if [ -f ~/.ssh/config_berecruited ]; then
-   source ~/.ssh/config_berecruited
-fi
