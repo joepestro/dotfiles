@@ -1,2 +1,3 @@
 git/gitconfig.symlink
-ssh/ssh.symlink/config_berecruited
+ssh/ssh.symlink/id_rsa*
+ssh/ssh.symlink/known_hosts
