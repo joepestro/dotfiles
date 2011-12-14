@@ -2,13 +2,20 @@
 
 ## dotfiles
 
-zsh, ruby, rails, git, brew, rvm, screen
+- zsh
+- screen
+- ruby
+- rails
+- git
+- brew
+- rvm
+- ...much more!
 
 ## editors
 
 - vim
-- gvim (linux)
 - mvim (osx)
+- gvim (linux)
 
 ## install
 
@@ -46,20 +53,9 @@ There's a few special files in the hierarchy.
 - **topic/\*.completion.sh**: Any files ending in `completion.sh` get loaded
   last so that they get loaded after we set up zsh autocomplete functions.
 
-## add-ons
-
-There are a few things I use to make my life awesome. They're not a required
-dependency, but if you install them they'll make your life a bit more like a
-bubble bath.
-
-- If you want some more colors for things like `ls`, install grc: `brew install
-  grc`.
-- If you install the excellent [rvm](http://rvm.beginrescueend.com) to manage
-  multiple rubies, your current branch will show up in the prompt. Bonus.
-
 ## thanks
 
-I forked [Zach Holman's](http://github.com/holman) super-cool
+I forked [Zach Holman](http://github.com/holman)'s super-cool
 [dotfiles](http://github.com/holman/dotfiles) mainly for the `rake
 install` organization. That's why each application gets its own
-directory. I really like that idea. Neat-o.
+directory and keeps things nice and clean. I really like that idea. Neat-o.
