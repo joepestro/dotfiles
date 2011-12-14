@@ -1,0 +1,19 @@
+startup_message off
+vbell off
+escape ``
+autodetach on
+defscrollback 10000
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{G} berecruited %{g}][%= %{= kw}%?%-Lw%?%{r} (%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]'
+
+chdir "/Users/joe/Desktop/beRecruited"
+
+
+screen -t shell 1
+stuff "git pull\012"
+
+screen -t be01 2
+stuff "ssh be_be01\012"
+
+
+select 1

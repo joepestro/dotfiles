@@ -1,0 +1,11 @@
+# ~/.screeninator/berecruited.yml
+# you can make as many tabs as you wish...
+
+escape: ``
+project_name: berecruited
+project_root: /Users/joe/Desktop/beRecruited
+tabs:
+  - shell:
+    - git pull
+  - be01: ssh be_be01
+  

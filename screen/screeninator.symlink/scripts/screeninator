@@ -1,0 +1,2 @@
+alias start_berecruited='if [[ -n `screen -ls | grep berecruited` ]] ; then `screen -dr berecruited` ; else `screen -c /Users/joe/.screeninator/berecruited.screen -S berecruited`; fi'
+alias start_berecruited_rails='if [[ -n `screen -ls | grep berecruited_rails` ]] ; then `screen -dr berecruited_rails` ; else `screen -c /Users/joe/.screeninator/berecruited_rails.screen -S berecruited_rails`; fi'

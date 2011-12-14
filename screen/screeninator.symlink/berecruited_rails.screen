@@ -1,0 +1,31 @@
+startup_message off
+vbell off
+escape ``
+autodetach on
+defscrollback 10000
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{G} berecruited_rails %{g}][%= %{= kw}%?%-Lw%?%{r} (%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]'
+
+chdir "/Users/joe/Desktop/beRecruited-rails"
+
+
+screen -t shell 1
+stuff "git pull && bundle install\012"
+
+screen -t foreman 2
+stuff "foreman start\012"
+
+screen -t server 3
+stuff "rails s\012"
+
+screen -t console 4
+stuff "rails c\012"
+
+screen -t logs 5
+stuff "tail -f log/development.log\012"
+
+screen -t dev-rails 6
+stuff "ssh be_dev_rails\012"
+
+
+select 1

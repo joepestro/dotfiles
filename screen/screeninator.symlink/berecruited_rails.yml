@@ -1,0 +1,16 @@
+# ~/.screeninator/berecruited_rails.yml
+# you can make as many tabs as you wish...
+
+escape: ``
+project_name: berecruited_rails
+project_root: /Users/joe/Desktop/beRecruited-rails
+tabs:
+  - shell:
+    - git pull
+    - bundle install
+  - foreman: foreman start
+  - server: rails s
+  - console: rails c
+  - logs: tail -f log/development.log
+  - dev-rails: ssh be_dev_rails
+  
