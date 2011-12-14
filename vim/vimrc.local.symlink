@@ -6,9 +6,6 @@ set bg=dark
 syntax enable
 color solarized
 
-" override leader key
-let mapleader = ","
-
 " no swap
 set nowb
 set nobackup
@@ -58,9 +55,6 @@ set smartindent
 " last status
 set laststatus=2
 
-" JSLint
-let $JS_CMD='node'
-
 " Switch on folding between all braces
 set foldenable
 set foldmethod=marker
@@ -69,17 +63,13 @@ set foldminlines=2
 set foldlevelstart=99
 set foldlevel=99
 
-" sudo save
-" http://www.reddit.com/r/vim/comments/kz84u/what_are_some_simple_yet_mindblowing_tweaks_to/
-cmap w!! %!sudo tee > /dev/null %
-
 " surround word with quotes
-nmap '' ysiw'
-nmap "" ysiw"
+nnoremap '' ysiw'
+nnoremap "" ysiw"
 
 " surround visual selection with quotes
-vmap '' S'
-vmap "" S"
+vnoremap '' S'
+vnoremap "" S"
 
 " like J, but opposite order (prepends line below)
 nnoremap K ddpkJ
@@ -91,7 +81,7 @@ nnoremap gp `[v`]
 nnoremap Y y$
 
 " clear current search highlight with esc
-nnoremap <esc> :noh<return><esc>
+noremap <esc> :noh<cr>
 
 " makes ,w split windows vertically
 nnoremap <leader>w <C-w>v<C-w>l
@@ -109,6 +99,10 @@ nnoremap <C-l> :exe -1 . "wincmd w"<cr>
 " editing/viewing files in this directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" sudo save
+" http://www.reddit.com/r/vim/comments/kz84u/what_are_some_simple_yet_mindblowing_tweaks_to/
+cnoremap w!! %!sudo tee > /dev/null %
+
 " move cursor between wrapped lines
 " http://vim.wikia.com/wiki/Move_cursor_by_display_lines_when_wrapping
 nnoremap j gj
@@ -123,24 +117,28 @@ vnoremap <Up> gk
 " switch between the last 2 files
 nnoremap <leader><leader> <c-^>
 
+" TODO: package this script in a nicer plugin
+" reveal in finder (false parameter means open in background)
+nnoremap <leader>R :silent !osascript ~/.vim/findercd.scpt %:p:h false<cr>
+
+" JSLint
+let $JS_CMD='node'
+
 " Rails.vim
 let g:rails_statusline = 0
 
 " CtrlP 
 let g:ctrlp_working_path_mode = 0
-nmap <D-p> :CtrlP<cr>
-nmap <C-t> :CtrlPMRU<cr>
-nmap <D-t> :CtrlPMRU<cr>
+nnoremap <D-p> :CtrlP<cr>
+nnoremap <C-t> :CtrlPMRU<cr>
+nnoremap <D-t> :CtrlPMRU<cr>
 
 " QuickRun
-nmap <D-r> :QuickRun<cr>
+nnoremap <D-r> :QuickRun<cr>
 
 " NERDTree
 let g:NERDTreeChDirMode = 2
-nmap <leader>r :NERDTreeFindHighlight<cr>
-
-" reveal in finder (false parameter means open in background)
-nmap <leader>R :silent !osascript ~/.vim/findercd.scpt %:p:h false<cr>
+nnoremap <leader>r :NERDTreeFindHighlight<cr>
 
 " automatically keep pwd updated when changing windows
 function! ChangeDirectoryToNERDTreeDir()
