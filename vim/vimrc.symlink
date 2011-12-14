@@ -1,38 +1,116 @@
-set noswapfile
+" must be first line
+set nocompatible
 
-" ----------------------------------------------------------------------------
-"  Text Formatting
-" ----------------------------------------------------------------------------
+" terminal colors
+set bg=dark
+syntax enable
+color solarized
 
-set autoindent             " automatic indent new lines
-set smartindent            " be smart about it
-inoremap # X<BS>#
-set nowrap                 " do not wrap lines
-set softtabstop=2          " yep, two
-set shiftwidth=2           " ..
-set tabstop=4
-set expandtab              " expand tabs to spaces
-set nosmarttab             " fuck tabs
-set formatoptions+=n       " support for numbered/bullet lists
-"set textwidth=80           " wrap at 80 chars by default
-set virtualedit=block      " allow virtual edit in visual block ..
-
-" ----------------------------------------------------------------------------
-"  Remapping
-" ----------------------------------------------------------------------------
-
-" lead with ,
+" override leader key
 let mapleader = ","
 
-" exit to normal mode with 'jj'
-inoremap jj <ESC>
+" no swap
+set nowb
+set nobackup
+set noswapfile
 
+" defaults for window split behavior
+set equalalways
+set splitbelow
+set splitright
 
-" reflow paragraph with Q in normal and visual mode
-nnoremap Q gqap
-vnoremap Q gq
+" no word wrapping
+set nowrap
+set textwidth=0
 
-" sane movement with wrap turned on
+" don't highlight line 
+set nocursorline
+
+" don't display tab or newline characters
+set nolist
+
+" check spelling
+set spell
+
+" highlight on incremental search
+set hlsearch
+
+" tab completion behave like bash
+set wildmenu
+set wildmode=longest,list
+
+" tabs, not spaces
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set noexpandtab
+
+" scrolling
+" https://github.com/spf13/spf13-vim/blob/master/.vimrc
+set scrolloff=5
+
+" backspace 
+set backspace=indent,eol,start
+
+" smart indentation
+set smartindent
+
+" last status
+set laststatus=2
+
+" JSLint
+let $JS_CMD='node'
+
+" Switch on folding between all braces
+set foldenable
+set foldmethod=marker
+set foldmarker={,}
+set foldminlines=2
+set foldlevelstart=99
+set foldlevel=99
+
+" sudo save
+" http://www.reddit.com/r/vim/comments/kz84u/what_are_some_simple_yet_mindblowing_tweaks_to/
+cmap w!! %!sudo tee > /dev/null %
+
+" surround word with quotes
+nmap '' ysiw'
+nmap "" ysiw"
+
+" surround visual selection with quotes
+vmap '' S'
+vmap "" S"
+
+" like J, but opposite order (prepends line below)
+nnoremap K ddpkJ
+
+" select pasted text
+nnoremap gp `[v`]
+
+" yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" clear current search highlight with esc
+nnoremap <esc> :noh<return><esc>
+
+" makes ,w split windows vertically
+nnoremap <leader>w <C-w>v<C-w>l
+
+" split window navigation with ctrl
+nnoremap <C-left> <C-w>h
+nnoremap <C-down> <C-w>j
+nnoremap <C-up> <C-w>k
+nnoremap <C-right> <C-w>l
+
+" move to leftmost/rightmost window with ctrl
+nnoremap <C-h> :exe 0 . "wincmd w"<cr>
+nnoremap <C-l> :exe -1 . "wincmd w"<cr>
+
+" editing/viewing files in this directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" move cursor between wrapped lines
+" http://vim.wikia.com/wiki/Move_cursor_by_display_lines_when_wrapping
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -41,45 +119,52 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 vnoremap <Down> gj
 vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
 
-" ----------------------------------------------------------------------------
-"  UI
-" ----------------------------------------------------------------------------
+" switch between the last 2 files
+nnoremap <leader><leader> <c-^>
 
-set ruler                  " show the cursor position all the time
-set noshowcmd              " don't display incomplete commands
-set nolazyredraw           " turn off lazy redraw
-set number                 " line numbers
-set wildmenu               " turn on wild menu
-set wildmode=list:longest,full
-set ch=2                   " command line height
-set backspace=2            " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
-set shortmess=filtIoOA     " shorten messages
-set report=0               " tell us about changes
-set nostartofline          " don't jump to the start of line when scrolling
+" Rails.vim
+let g:rails_statusline = 0
 
+" CtrlP 
+let g:ctrlp_working_path_mode = 0
+nmap <D-p> :CtrlP<cr>
+nmap <C-t> :CtrlPMRU<cr>
+nmap <D-t> :CtrlPMRU<cr>
 
-" ----------------------------------------------------------------------------
-" Visual Cues
-" ----------------------------------------------------------------------------
+" QuickRun
+nmap <D-r> :QuickRun<cr>
 
-set showmatch              " brackets/braces that is
-set mat=5                  " duration to show matching brace (1/10 sec)
-set incsearch              " do incremental searching
-set laststatus=2           " always show the status line
-set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
+" NERDTree
+let g:NERDTreeChDirMode = 2
+nmap <leader>r :NERDTreeFindHighlight<cr>
 
+" reveal in finder (false parameter means open in background)
+nmap <leader>R :silent !osascript ~/.vim/findercd.scpt %:p:h false<cr>
 
-" ---------------------------------------------------------------------------
-"  Strip all trailing whitespace in file
-" ---------------------------------------------------------------------------
+" automatically keep pwd updated when changing windows
+function! ChangeDirectoryToNERDTreeDir()
+	" don't do anything if we're restoring a session
+	if exists("g:SessionLoad") && g:SessionLoad == 1
+		return
+	elseif exists("g:NERDTreeDirNode.GetRootForTab().path")
+		silent echo g:NERDTreeDirNode.GetRootForTab().path.changeToDir()
+	else
+		let s:path = expand("%:p:h")
+		" exe "cd" s:path
+	endif
+endfunction 
 
-function! StripWhitespace ()
-    exec ':%s/ \+$//gc'
+au WinEnter * call ChangeDirectoryToNERDTreeDir()
+
+" find, then highlight file
+function! NERDTreeFindHighlight()
+	let s:filename = expand("%:t")
+	
+	NERDTreeFind
+	silent! exe "normal /" . s:filename . "/\<cr>"
 endfunction
-map ,s :call StripWhitespace ()<CR>
+
+command! NERDTreeFindHighlight call NERDTreeFindHighlight()
+
+" nmap <D-R> :silent !/Users/joe/Library/Application\ Support/Titanium/mobilesdk/osx/1.6.2/iphone/builder.py "simulator" "4.3" . "com.joepestro.bargains" "Bargains" <cr>
