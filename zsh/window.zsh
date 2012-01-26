@@ -8,12 +8,12 @@ function title() {
   a=$(print -Pn "%40>...>$a" | tr -d "\n")
 
   case $TERM in
-  screen)
-    print -Pn "\ek$a:$3\e\\" # screen title (in ^A")
-    ;;
+  # screen)
+	# print -Pn "\ek$a:$3\e\\" # screen title (in ^A")
+	# ;;
   xterm*|rxvt)
-    print -Pn "\e]2;$2\a" # plain xterm title ($3 for pwd)
-    ;;
+	print -Pn "\e]2;$2\a" # plain xterm title ($3 for pwd)
+	;;
   esac
 }
 
