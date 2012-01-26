@@ -3,7 +3,7 @@
 
 escape: ``
 project_name: berecruited_rails
-project_root: /Users/joe/Desktop/beRecruited-rails
+project_root: /Users/joe/Development/beRecruited-rails
 tabs:
   - shell:
     - git pull

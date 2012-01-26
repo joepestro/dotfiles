@@ -6,7 +6,7 @@ defscrollback 10000
 hardstatus alwayslastline
 hardstatus string '%{= kg}[ %{G} berecruited_rails %{g}][%= %{= kw}%?%-Lw%?%{r} (%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]'
 
-chdir "/Users/joe/Desktop/beRecruited-rails"
+chdir "/Users/joe/Development/beRecruited-rails"
 
 
 screen -t shell 1
