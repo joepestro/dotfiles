@@ -94,7 +94,7 @@ nnoremap <C-right> <C-w>l
 
 " move to leftmost/rightmost window with ctrl
 nnoremap <C-h> :exe 0 . "wincmd w"<cr>
-nnoremap <C-l> :exe -1 . "wincmd w"<cr>
+nnoremap <C-l> :exe 9 . "wincmd w"<cr>
 
 " editing/viewing files in this directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -124,14 +124,10 @@ nnoremap <leader>R :silent !osascript ~/.vim/findercd.scpt %:p:h false<cr>
 " JSLint
 let $JS_CMD='node'
 
-" Rails.vim
-let g:rails_statusline = 0
-
 " CtrlP 
 let g:ctrlp_working_path_mode = 0
-nnoremap <D-p> :CtrlP<cr>
+nnoremap <D-t> :CtrlP<cr>
 nnoremap <C-t> :CtrlPMRU<cr>
-nnoremap <D-t> :CtrlPMRU<cr>
 
 " QuickRun
 nnoremap <D-r> :QuickRun<cr>
@@ -164,3 +160,4 @@ function! NERDTreeFindHighlight()
 endfunction
 
 command! NERDTreeFindHighlight call NERDTreeFindHighlight()
+

@@ -1,0 +1,5 @@
+" override leader key
+let mapleader = "\\"
+
+" use disable_plugin to exclude defaults
+call janus#disable_plugin("command-t", "Using CtrlP instead")
