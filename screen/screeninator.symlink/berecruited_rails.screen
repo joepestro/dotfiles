@@ -10,7 +10,7 @@ chdir "/Users/joe/Development/beRecruited-rails"
 
 
 screen -t shell 1
-stuff "git pull && bundle install\012"
+stuff "git up && bundle install\012"
 
 screen -t foreman 2
 stuff "foreman start\012"
@@ -21,10 +21,7 @@ stuff "rails s\012"
 screen -t console 4
 stuff "rails c\012"
 
-screen -t logs 5
-stuff "tail -f log/development.log\012"
-
-screen -t dev-rails 6
+screen -t dev-rails 5
 stuff "ssh be_dev_rails\012"
 
 

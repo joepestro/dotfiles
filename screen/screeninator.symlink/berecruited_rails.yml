@@ -6,11 +6,10 @@ project_name: berecruited_rails
 project_root: /Users/joe/Development/beRecruited-rails
 tabs:
   - shell:
-    - git pull
+    - git up
     - bundle install
   - foreman: foreman start
   - server: rails s
   - console: rails c
-  - logs: tail -f log/development.log
   - dev-rails: ssh be_dev_rails
   

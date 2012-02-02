@@ -6,6 +6,6 @@ project_name: berecruited
 project_root: /Users/joe/Development/beRecruited
 tabs:
   - shell:
-    - git pull
+    - git up
   - be01: ssh be_be01
   

@@ -10,7 +10,7 @@ chdir "/Users/joe/Development/beRecruited"
 
 
 screen -t shell 1
-stuff "git pull\012"
+stuff "git up\012"
 
 screen -t be01 2
 stuff "ssh be_be01\012"
