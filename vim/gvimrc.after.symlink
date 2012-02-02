@@ -2,8 +2,8 @@
 color molokai
 
 " graphical fonts
-set guifont=Monaco:h10
-set antialias
+set guifont=Bitstream\ Vera\ Sans\ Mono:h11
+set noantialias
 
 " no toolbars
 set guioptions=rAce
@@ -30,17 +30,59 @@ let g:session_autosave = 1
 let g:session_autoload = 1
 
 " fix macvim meta+arrow behavior
-nnoremap <S-M-Up> v{
-nnoremap <S-M-Down> v}
+noremap <M-Up> {
+noremap <M-Down> }
+noremap <M-Left> B
+noremap <M-Right> E
 
-nnoremap <M-Left> B
-nnoremap <M-Right> E
+noremap <S-M-Up> v{
+noremap <S-M-Down> v}
+noremap <S-M-Left> vB
+noremap <S-M-Right> vE
+
+inoremap <M-Up> <esc>{
+inoremap <M-Down> <esc>}
+inoremap <M-Left> <esc>B
+inoremap <M-Right> <esc>E
 
 inoremap <S-M-Up> <esc>v{
 inoremap <S-M-Down> <esc>v}
+inoremap <S-M-Left> <esc>vB
+inoremap <S-M-Right> <esc>vE
 
 vnoremap <S-M-Up> {
 vnoremap <S-M-Down> }
-
 vnoremap <S-M-Left> B
 vnoremap <S-M-Right> E
+
+" fix macvim super-arrow behavior
+noremap <S-D-Up> vgg
+noremap <S-D-Down> vG$
+noremap <S-D-Left> v0
+noremap <S-D-Right> v$
+
+inoremap <S-D-Up> <esc>vgg
+inoremap <S-D-Down> <esc>vG$
+inoremap <S-D-Left> <esc>v0
+inoremap <S-D-Right> <esc>v$
+
+vnoremap <S-D-Up> gg
+vnoremap <S-D-Down> G$
+vnoremap <S-D-Left> 0
+vnoremap <S-D-Right> $
+
+" fix macvim shift-arrow behavior
+noremap <S-Up> vk
+noremap <S-Down> vj
+noremap <S-Left> vh
+noremap <S-Right> vl
+
+inoremap <S-Up> <esc>vk
+inoremap <S-Down> <esc>vj
+inoremap <S-Left> <esc>vh
+inoremap <S-Right> <esc>vl
+
+vnoremap <S-Up> k
+vnoremap <S-Down> j
+vnoremap <S-Left> h
+vnoremap <S-Right> l

@@ -81,10 +81,8 @@ nnoremap gp `[v`]
 nnoremap Y y$
 
 " clear current search highlight with esc
-noremap <esc> :noh<cr>
-
-" makes ,w split windows vertically
-nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <esc> :noh<cr>
+inoremap jj <esc>
 
 " split window navigation with ctrl
 nnoremap <C-left> <C-w>h

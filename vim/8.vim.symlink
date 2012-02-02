@@ -1,0 +1,17 @@
+" make bottom row
+exe "normal \<c-w>n"
+exe "normal \<c-w>v"
+exe "normal \<c-w>v"
+exe "normal \<c-w>v"
+
+" go back to top row
+exe "normal \<c-w>k"
+
+" make top row
+exe "normal \<c-w>v"
+exe "normal \<c-w>v"
+exe "normal \<c-w>v"
+
+" focus first window
+exe 0 . "wincmd w"
+
