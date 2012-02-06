@@ -158,4 +158,3 @@ function! NERDTreeFindHighlight()
 endfunction
 
 command! NERDTreeFindHighlight call NERDTreeFindHighlight()
-

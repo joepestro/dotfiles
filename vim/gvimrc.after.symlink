@@ -2,7 +2,7 @@
 color molokai
 
 " graphical fonts
-set guifont=Bitstream\ Vera\ Sans\ Mono:h11
+set guifont=monaco:h10
 set noantialias
 
 " no toolbars

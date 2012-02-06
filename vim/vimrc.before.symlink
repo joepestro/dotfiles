@@ -3,3 +3,9 @@ let mapleader = "\\"
 
 " use disable_plugin to exclude defaults
 call janus#disable_plugin("command-t", "Using CtrlP instead")
+call janus#disable_plugin("buffergator")
+call janus#disable_plugin("easymotion")
+call janus#disable_plugin("gundo")
+call janus#disable_plugin("syntastic")
+call janus#disable_plugin("tagbar")
+call janus#disable_plugin("vimwiki")
